@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ContextLens History Vault – Browse your AI-powered lookup history.">
+  <title>ContextLens – History Vault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- ── SIDEBAR ─────────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+      </svg>
+      <span>ContextLens</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" id="nav-history" aria-label="History Vault">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+        History Vault
+      </a>
+      <a href="#" class="nav-item" id="nav-stats" aria-label="Stats">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+        Insights
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-badge">
+        <div class="dot dot--green"></div>
+        Gemini 2.0 Flash
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ──────────────────────────────────────────────────────── -->
+  <main class="main" id="main-content">
+
+    <!-- HEADER -->
+    <header class="page-header">
+      <div class="header-left">
+        <h1 class="page-title" id="page-title">History Vault</h1>
+        <p class="page-subtitle" id="page-subtitle">Your recent AI-powered lookups</p>
+      </div>
+      <div class="header-right">
+        <div class="search-bar">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Search lookups…"
+            aria-label="Search history"
+            autocomplete="off"
+          >
+        </div>
+        <div class="header-actions">
+          <button class="btn btn--filter" id="filter-btn" aria-label="Filter by category">
+            <svg viewBox="0 0 24 24"><path d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.74-7.39A.998.998 0 0019 4H5a1 1 0 00-.75 1.61z"/></svg>
+            Filter
+          </button>
+          <button class="btn btn--danger" id="clear-btn" aria-label="Clear all history">
+            <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            Clear All
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- FILTER CHIPS -->
+    <div class="filter-chips" id="filter-chips" hidden>
+      <span class="chip chip--active" data-filter="all">All</span>
+      <span class="chip" data-filter="tech">Tech</span>
+      <span class="chip" data-filter="medical">Medical</span>
+      <span class="chip" data-filter="legal">Legal</span>
+      <span class="chip" data-filter="history">History</span>
+      <span class="chip" data-filter="general">General</span>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-total">—</span>
+        <span class="stat-label">Total Lookups</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-today">—</span>
+        <span class="stat-label">Today</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-top-cat">—</span>
+        <span class="stat-label">Top Category</span>
+      </div>
+    </div>
+
+    <!-- HISTORY GRID -->
+    <section class="history-section" aria-labelledby="page-title">
+      <!-- Empty state -->
+      <div class="empty-state" id="empty-state" hidden>
+        <div class="empty-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/></svg>
+        </div>
+        <h2 class="empty-title">No lookups yet</h2>
+        <p class="empty-body">Select any text on a webpage and ContextLens will explain it instantly.</p>
+      </div>
+
+      <!-- History cards -->
+      <div class="history-grid" id="history-grid" role="list" aria-label="Lookup history">
+        <!-- Cards injected by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
