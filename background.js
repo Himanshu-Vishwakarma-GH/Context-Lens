@@ -11,7 +11,7 @@
 // OPENROUTER CONFIG
 // ─────────────────────────────────────────────────────────────────────────────
 
-const OR_API_KEY  = "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";
+const OR_API_KEY  = "";
 const OR_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions";
 
 /**
